@@ -75,8 +75,8 @@ defineParticle(({DomParticle}) => {
         <div>
           <div msg class="{{classes}}">
             <span>{{content}}</span>
-            <div mustache style="{{brostyle}}">
-              <img src="{{bromsg}}" height="{{broheight}}" width="{{browidth}}"></img>
+            <div mustache style="{{mustachestyle}}">
+              <img src="{{mustache}}" height="24px" width="24px"></img>
             </div>
             <span author>@<span>{{name}}</span></span>
           </div>
@@ -130,13 +130,11 @@ defineParticle(({DomParticle}) => {
 
           let tmpl = {name, content, classes, bromsg: ''};
           // Display BRO messages. move this over to a particle that stitched together.
-          tmpl.brostyle = 'display: none';
-          if (type == 'bro') {
-            let {msg, height, width} = JSON.parse(content);
-            tmpl.bromsg = msg;
-            tmpl.broheight = height;
-            tmpl.browidth = width;
-            tmpl.brostyle = '';
+          tmpl.mustachestyle = 'display: none';
+          if (type == 'mustache') {
+            //let {msg, height, width} = JSON.parse(content);
+            tmpl.mustache = content;
+            tmpl.mustachestyle = '';
             tmpl.content = '';
           }
           return tmpl;
