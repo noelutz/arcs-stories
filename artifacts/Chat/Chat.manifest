@@ -29,6 +29,16 @@ recipe
     chats = chatsView
     me <- meView
 
+recipe
+  copy #chats as chatsView
+  map #identity as userIdentity
+
+  RenderTranscript
+    chats <- chatsView
+    me <- userIdentity
+  Compose
+    chats = chatsView
+    me <- userIdentity
 
 recipe
   use #me as meView

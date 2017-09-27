@@ -68,7 +68,7 @@ defineParticle(({DomParticle}) => {
   <div>
     <div slotid="preamble"></div>
     <div head>
-      <span>Chat</span>
+      <span>Chat @<span>{{user}}</span></span>
     </div>
     <x-list items="{{chats}}">
       <template>
@@ -147,6 +147,7 @@ defineParticle(({DomParticle}) => {
     _render(props, state) {
       if (state.chats && state.chats.length) {
         return {
+          user: props.me.name,
           chats: state.chats,
           compose: state.compose
         };
