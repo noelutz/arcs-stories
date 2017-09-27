@@ -23,6 +23,10 @@ defineParticle(({DomParticle}) => {
     align-items: center;
     padding: 8px 16px;
   }
+  [list-view]:not([expanded]) x-list,
+  [list-view]:not([expanded]) [slotid="compose"] {
+    display: none;
+  }
   [list-view] [msg] {
     display: flex;
     align-items: center;
@@ -36,7 +40,7 @@ defineParticle(({DomParticle}) => {
     background-color: #ebffdc;
   }
   [list-view] [msg].first {
-    margin: 15px 15px 3px 15px;    
+    margin: 15px 15px 3px 15px;
   }
   [list-view] [author] {
     visibility: hidden;
@@ -63,12 +67,33 @@ defineParticle(({DomParticle}) => {
     font-style: italic;
     color: grey;
   }
+  [list-view] .expand-button,
+  [list-view] .collapse-button {
+    background-color: transparent;
+    color: inherit;
+    border: 0;
+  }
+  [list-view] .expand-button {
+    display: block;
+  }
+  [list-view][expanded] .expand-button {
+    display: none;
+  }
+  [list-view] .collapse-button {
+    display: none;
+  }
+  [list-view][expanded] .collapse-button {
+    display: block;
+  }
 </style>
-<div list-view>
+<div list-view expanded$="{{expanded}}">
   <div>
     <div slotid="preamble"></div>
     <div head>
       <span>Chat @<span>{{user}}</span></span>
+      <div style="flex: 1;"></div>
+      <button class="expand-button" on-click="_expandList"><i class="material-icons">expand_more</i></button>
+      <button class="collapse-button" on-click="_collapseList"><i class="material-icons">expand_less</i></button>
     </div>
     <x-list items="{{chats}}">
       <template>
@@ -87,7 +112,7 @@ defineParticle(({DomParticle}) => {
   <div slotid="compose"></div>
   <x-list items="{{compose}}">
     <template>
-      <div slotid$="{{slot}}"></div>   
+      <div slotid$="{{slot}}"></div>
     </template>
   </x-list>
 </div>
@@ -96,7 +121,7 @@ defineParticle(({DomParticle}) => {
   return class RenderTranscript extends DomParticle {
     get template() {
       return template;
-    } 
+    }
     _willReceiveProps(props) {
       if (!props.me || !props.me.name) {
         return;
@@ -147,9 +172,16 @@ defineParticle(({DomParticle}) => {
         return {
           user: props.me.name,
           chats: state.chats,
-          compose: state.compose
+          compose: state.compose,
+          expanded: Boolean(state.expanded)
         };
       }
+    }
+    _expandList(e, state) {
+      this._setState({ expanded: true });
+    }
+    _collapseList(e, state) {
+      this._setState({ expanded: false });
     }
   };
 });
