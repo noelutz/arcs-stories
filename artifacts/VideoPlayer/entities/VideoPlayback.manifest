@@ -6,10 +6,11 @@
 # subject to an additional IP rights grant found at
 # http://polymer.github.io/PATENTS.txt
 
-import '../entities/VideoPlayback.manifest'
+import 'https://polymerlabs.github.io/arcs-cdn/dev/entities/Thing.manifest'
 
-particle ControlVideo in 'ControlVideo.js'
-  # Should be a Variable but those don't get synced... yet.
-  ControlVideo(inout [VideoPlayback] controls)
-  consume root
-  description `Control video`
+schema VideoPlayback extends Thing
+  normative
+    Text mode
+    Text ts
+    Text position
+    Text volume

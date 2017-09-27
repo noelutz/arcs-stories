@@ -12,13 +12,37 @@
 
 defineParticle(({DomParticle}) => {
 
-  let template = `
+  /*
+    let template = `
 <span>{{mode}}</span> @ <span>{{position}}</span>
 <button on-click="_play">Play</button>
-<button on-click="_pause">Pause</button><br>
+<button on-click="_pause">Pause</button>
+<button on-click="_restart">Restart</button><br>
 <button on-click="_downVolume">--</button>
 <button on-click="_muteVolume">mute</button>
 <button on-click="_upVolume">++</button>
+  `.trim();
+*/
+  
+  let template = `
+<style>
+  [video-controller] button {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+  }
+</style>
+<div video-controller style="padding: 4px;">
+  <div style="display: flex;">
+    <button on-click="_play"><i class="material-icons">play_arrow</i></button>
+    <button on-click="_pause"><i class="material-icons">pause</i></button>
+    <button on-click="_restart"><i class="material-icons">replay</i></button>
+    <div style="flex: 1; text-align: center; font-size: 0.7em;"><span>{{mode}}</span> @ <span>{{position}}</span></div>
+    <button on-click="_muteVolume"><i class="material-icons">volume_mute</i></button>
+    <button on-click="_downVolume"><i class="material-icons">volume_down</i></button>
+    <button on-click="_upVolume"><i class="material-icons">volume_up</i></button>
+  </div>
+</div>
   `.trim();
 
   let Play = 'play';
@@ -31,55 +55,58 @@ defineParticle(({DomParticle}) => {
     _getInitialState() {
       return {mode: Pause, position: 0, ts: Date.now(), volume: 20};
     }
-    async setViews(views) {
-      super.setViews(views);
-      // Read out the most recent video playback information and
-      // otherwise set it.
-      if (views.controls) {
-        if (views.controls.length) {
-          this._state = views.controls[views.controls.length - 1];
-        } else {
-          this.setVideoPlayback();
-        }
+    _willReceiveProps(props) {
+      if (props.controls && props.controls.length) {
+        let last = props.controls[props.controls.length - 1];
+        this._setState({
+          mode: last.mode,
+          position: Number(last.position),
+          ts: Number(last.ts),
+          volume: Number(last.volume),
+          changed: false,
+        });
       }
     }
-    _setVideoPlayback() {
+    _setVideoPlayback(state) {
       const VideoPlayback = this._views.get('controls').entityClass;
-      this._views.get('controls').store(new VideoPlayback(this._state));
+      this._views.get('controls').store(new VideoPlayback(state));
     }
-    _updateState(mode) {
-      if (this._state.mode == mode)
+    _updateState(newMode) {
+      let {position, mode, ts} = this._state;
+      if (mode == newMode)
         return;
       let newTs = Date.now();
-      if (mode == Pause) {
+      if (newMode == Pause) {
         // Compute the new position. Mode used to be play.
-        console.assert(this._state.mode == Play);
-        this._state.position += (newTs - this._state.ts);
+        console.assert(mode == Play);
+        position += (newTs - ts);
       }
-      this._state.mode = mode;
-      this._state.ts = newTs;
+      
+      this._setState({mode: newMode, ts: newTs, position, changed: true});
     }
     _play(e, state) {
       this._updateState(Play)
-      this._setVideoPlayback();
     }
     _pause(e, state) {
       this._updateState(Pause);
-      this._setVideoPlayback();
+    }
+    _restart(e, state) {
+      this._setState({mode: Play, position: 0, ts: Date.now(), changed: true});
     }
     _downVolume(e, state) {
-      this._state.volume = Math.max(0, this._state.volume - 10);
-      this._setVideoPlayback();
+      this._setState({changed: true, volume: Math.max(0, this._state.volume - 10)});
     }
     _upVolume(e, state) {
-      this._state.volume = Math.min(100, this._state.volume + 10);      
-      this._setVideoPlayback();
+      this._setState({changed: true, volume: Math.max(0, this._state.volume + 10)});
     }
     _muteVolume(e, state) {
-      this._state.volume = 0;
-      this._setVideoPlayback();
+      this._setState({changed: true, volume: 0});
     }
     _render(props, state) {
+      if (state.changed) {
+        this._setVideoPlayback(state);
+        state.changed = false;
+      }
       return state;
     }
   };
