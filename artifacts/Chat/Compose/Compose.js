@@ -45,7 +45,6 @@ defineParticle(({DomParticle}) => {
 <div compose>
   <input name="msg" type="text" id="msg" size="30" value={{msg}} on-change="_onMessageChange" />
   <i class="send-icon material-icons">send</i>
-  <!--<span on-click="_onClear">X</span>-->
 </div>
   `.trim();
 

@@ -12,4 +12,4 @@ import '../entities/Chat.manifest'
 particle Compose in 'Compose.js'
   Compose(in Person me, inout [Chat] chats)
   consume compose
-  description `Compose chat`
+  description `compose chat`

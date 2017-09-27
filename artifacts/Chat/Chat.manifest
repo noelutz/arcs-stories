@@ -12,22 +12,7 @@ import 'entities/Chat.manifest'
 view Chats of [Chat] #chats in 'chat.json'
 
 import 'Compose/Compose.manifest'
-import 'Identify/Identify.manifest'
 import 'RenderTranscript/RenderTranscript.manifest'
-import 'RenderTranscript/RenderTranscript2.manifest'
-
-recipe
-  copy #chats as chatsView
-  create #me as meView
-
-  Identify
-    user -> meView
-  RenderTranscript
-    chats <- chatsView
-    me <- meView
-  Compose
-    chats = chatsView
-    me <- meView
 
 recipe
   copy #chats as chatsView
@@ -39,10 +24,3 @@ recipe
   Compose
     chats = chatsView
     me <- userIdentity
-
-recipe
-  use #me as meView
-  use #chats as fooView
-  RenderTranscript2
-    chats <- fooView
-    me <- meView

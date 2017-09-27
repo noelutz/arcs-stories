@@ -11,4 +11,4 @@ import '../entities/VideoPlayback.manifest'
 particle ShowVideo in 'ShowVideo.js'
   ShowVideo(in [VideoPlayback] controls)
   consume root
-  description `Show Video`
+  description `show video`

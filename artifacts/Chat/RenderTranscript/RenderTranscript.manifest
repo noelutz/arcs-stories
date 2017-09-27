@@ -14,4 +14,4 @@ particle RenderTranscript in 'RenderTranscript.js'
   consume root
     provide preamble
     provide compose    
-  description `See chats`
+  description `see chats`

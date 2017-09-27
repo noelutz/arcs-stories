@@ -12,4 +12,4 @@ particle ControlVideo in 'ControlVideo.js'
   # Should be a Variable but those don't get synced... yet.
   ControlVideo(inout [VideoPlayback] controls)
   consume root
-  description `Control video`
+  description `control video`
