@@ -1,0 +1,12 @@
+
+
+import 'ComposeMustache/ComposeMustache.manifest'
+
+recipe
+  use #chats as chatsView
+  map #identity as userIdentity
+
+  ComposeMustache
+    chats = chatsView
+    me <- userIdentity
+

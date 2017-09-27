@@ -1,0 +1,5 @@
+import 'https://noelutz.github.io/arcs-stories/artifacts/Chat/entities/Chat.manifest'
+
+schema Mustache extends Chat
+  normative
+    Text mustache
