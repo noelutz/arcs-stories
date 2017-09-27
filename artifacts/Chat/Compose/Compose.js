@@ -15,13 +15,27 @@ defineParticle(({DomParticle}) => {
   let template = `
 <style>
   [compose] {
-    background-color: #dddddd;
+    display: flex;
+    position: relative;
   }
   [compose] input {
+    flex: 1;
+    border: 0;
+    border-radius: 5px;
+    padding: 6px;
+    padding-right: 32px;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
     color: #666666;
     font-size: 1.1em;
     font-family: inherit;
     margin: 15px;
+    -webkit-appearance: none;
+    outline: none;
+  }
+  [compose] .send-icon {
+    position: absolute;
+    top: 20px;
+    right: 18px;
   }
   [compose] button {
     margin: 15px 15px 15px 3px;
@@ -30,7 +44,8 @@ defineParticle(({DomParticle}) => {
 </style>
 <div compose>
   <input name="msg" type="text" id="msg" size="30" value={{msg}} on-change="_onMessageChange" />
-  <span on-click="_onClear">X</span>
+  <i class="send-icon material-icons">send</i>
+  <!--<span on-click="_onClear">X</span>-->
 </div>
   `.trim();
 
