@@ -76,9 +76,9 @@ defineParticle(({DomParticle}) => {
           <div msg class="{{classes}}">
             <span>{{content}}</span>
             <div mustache style="{{mustachestyle}}">
-              <img src="{{mustache}}" height="24px" width="24px"></img>
+              <img src="{{mustache}}" height="24px" width="42px"></img>
             </div>
-            <span author>@<span>{{name}}</span></span>
+            <span author>@<span>{{name}}</span>
           </div>
         </div>
       </template>
