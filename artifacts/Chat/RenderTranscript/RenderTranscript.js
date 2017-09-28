@@ -122,6 +122,9 @@ defineParticle(({DomParticle}) => {
     get template() {
       return template;
     }
+    _getInitialState() {
+      return {expanded: true};
+    }
     _willReceiveProps(props) {
       if (!props.me || !props.me.name) {
         return;
