@@ -8,6 +8,8 @@
 
 import 'https://polymerlabs.github.io/arcs-cdn/dev/entities/Thing.manifest'
 
+view Things of [Thing] #things in 'things.json'
+
 particle ShowThings in 'ShowThings.js'
   ShowThings(in [Thing] things)
   consume root
