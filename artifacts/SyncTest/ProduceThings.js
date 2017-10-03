@@ -13,7 +13,12 @@
 defineParticle(({DomParticle}) => {
 
   let template = `
-<div>
+<style>
+  [edit] {
+    margin: 25px;
+  }
+</style>
+<div edit>
   <input name="name" type="text" id="name" size="30" value={{name}} on-change="_onNameChange"></input>
 </div>
   `.trim();
