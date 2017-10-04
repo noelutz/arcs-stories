@@ -29,7 +29,20 @@
    * Copy & pasting Arc URL into a new TAB but **replace &user=Berni w/ &user=Matt before** hitting <enter>.
    * You may need to hit "CTRL+S". RACE :(.
    * **Expectation:** "Show things" should automatically be accepted and **Matt's** messages should appear.
- 
+
+**Test shared Arc & replay of suggestions scenario**:
+ * Step 1
+   * Privatize everything (see below).
+   * Visit [demo Arc as Berni](https://polymerlabs.github.io/arcs-cdn/dev/app/?solo=https://noelutz.github.io/arcs-stories/artifacts/SyncTest/recipe.manifest&user=Berni).
+   * Accept only suggestion.
+   * Add a few messages.
+   * Flag Arc as being shared.
+ * Step 2
+   * Visit [demo Arc as Matt](https://polymerlabs.github.io/arcs-cdn/dev/app/?solo=https://noelutz.github.io/arcs-stories/artifacts/SyncTest/recipe.manifest&user=Matt).
+   * Select Berni as a friend (to pull in Berni's shared views).
+   * You may need to hit "CTRL+S". RACE :(.
+   * **Expectation:** "Show things" appears and displays Berni's shared things. Editing Berni's views should be reflected in Matt's Arc because the view is mapped.
+
 
 ## Recipes
 
