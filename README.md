@@ -2,7 +2,34 @@
 
 ## Tests
 
-1. basic view sync and suggestion replaying [Recipe](https://noelutz.github.io/arcs-stories/artifacts/SyncTest/recipe.manifest), [Demo](https://polymerlabs.github.io/arcs-cdn/dev/app/?solo=https://noelutz.github.io/arcs-stories/artifacts/SyncTest/recipe.manifest)
+**Test sync & replay of suggestions scenario**:
+ * Privatize everything (see below).
+ * Visit [demo Arc](https://polymerlabs.github.io/arcs-cdn/dev/app/?solo=https://noelutz.github.io/arcs-stories/artifacts/SyncTest/recipe.manifest).
+ * Accept only suggestion
+ * Add a few messages by filling the text box + hitting <enter>
+ * Copy & paste URL into another TAB.
+ * **Expectation**: suggestion should automatically be accepted and messages rendered.
+
+**Test profile & replay of profile specific suggestions scenario**:
+ * Step 1
+   * Privatize everything (see below).
+   * Visit [demo Arc as Berni](https://polymerlabs.github.io/arcs-cdn/dev/app/?solo=https://noelutz.github.io/arcs-stories/artifacts/SyncTest/recipe.manifest&user=Berni).
+   * Accept only suggestion.
+   * Add a few messages.
+   * Flag Arc as being part of Berni's profile.
+ * Step 2
+   * Repeat same thing for Matt. Visit [demo Arc as Matt](https://polymerlabs.github.io/arcs-cdn/dev/app/?solo=https://noelutz.github.io/arcs-stories/artifacts/SyncTest/recipe.manifest&user=Matt).
+   * Repeat steps above for Matt.
+ * Step 3
+   * Create a [new demo Arc as Berni](https://polymerlabs.github.io/arcs-cdn/dev/app/?solo=https://noelutz.github.io/arcs-stories/artifacts/SyncTest/recipe.manifest&user=Berni).
+   * Accept "Show things".
+   * You may need to hit "CTRL+S". RACE :(.
+   * **Expectation:** Berni's messages appear from his profile.
+ * Step 4
+   * Copy & pasting Arc URL into a new TAB but **replace &user=Berni w/ &user=Matt before** hitting <enter>.
+   * You may need to hit "CTRL+S". RACE :(.
+   * **Expectation:** "Show things" should automatically be accepted and **Matt's** messages should appear.
+ 
 
 ## Recipes
 
