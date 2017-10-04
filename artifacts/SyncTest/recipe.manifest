@@ -13,7 +13,7 @@ import 'https://polymerlabs.github.io/arcs-cdn/dev/entities/Thing.manifest'
 particle ShowThings in 'ShowThings.js'
   ShowThings(in [Thing] things)
   consume root
-  description `show things`
+  description `show ${things}`
 
 particle ProduceThings in 'ProduceThings.js'
   ProduceThings(out [Thing] things)
