@@ -9,6 +9,8 @@
 import 'https://polymerlabs.github.io/arcs-cdn/dev/entities/Person.manifest'
 import '../entities/Chat.manifest'
 
+view Chats of [Chat] #chats in '../chat.json'
+
 import 'ParticipantList.manifest'
 import 'RenderTranscript.manifest'
 import 'RenderMustaches.manifest'

@@ -11,8 +11,8 @@
 defineParticle(({DomParticle}) => {
 
   let templates = {
-    mustache: ` <img src="{{message}}" id="{{name}}" height="24px" width="42px"></img>`.trim(),
-    chat: `<div id={{name}}><div>{{message}}</div></div>`.trim(),
+    mustache: ` <a-image src="{{message}}" id="{{name}}"></a-image>`.trim(),
+    chat: `<a-text id={{name}} value={{message}}></a-text>`.trim(),
   };
 
   return class extends DomParticle {

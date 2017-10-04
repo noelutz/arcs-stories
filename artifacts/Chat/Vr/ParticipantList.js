@@ -11,18 +11,14 @@
 defineParticle(({ DomParticle }) => {
 
   let template = `
-<div>
-  <span>Show some people:</span>
   <x-list items="{{users}}">
     <template>
-      <div>
-        <span>{{name}}</span>:
-        <div slotid="mouth" subid$="{{subId}}"></div>
-        <div slotid="topofhead" subid$="{{subId}}"></div>
-      </div>
+      <a-box color="yellow" depth="0.5" height="0.5" width="0.5" position="0 0.75 0">
+        <a-entity slotid="mouth" subid$="{{subId}}" position="0 0.5 0"></a-entity>
+        <a-entity slotid="topofhead" subid$="{{subId}}" position="0 0.5 0"></a-entity>
+      </a-box>
     </template>
   </x-list>
-</div>
     `.trim();
 
   return class extends DomParticle {
