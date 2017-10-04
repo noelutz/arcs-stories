@@ -21,6 +21,9 @@ exports.privatize = functions.https.onRequest((request, response) => {
           shared.ref.remove();
         }
       });
+      user.child('profile').forEach(profile => {
+        profile.ref.remove();
+      });
     });
   }).then(() => {
     response.send("ok!");
