@@ -27,3 +27,8 @@ recipe
     things -> thingsView
   ShowThings
     things <- thingsView
+
+recipe
+  map #things as thingsView
+  ShowThings
+    things <- thingsView
