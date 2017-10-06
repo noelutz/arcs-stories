@@ -1,4 +1,4 @@
-import 'https://polymerlabs.github.io/arcs-cdn/dev/entities/Thing.manifest'
+import 'https://$cdn/entities/Thing.manifest'
 
 schema Chat extends Thing
   normative
