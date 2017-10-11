@@ -3,8 +3,7 @@
 ## Tests
 
 **Test sync & replay of suggestions scenario**:
- * Privatize everything (see below).
- * Visit [demo Arc](https://polymerlabs.github.io/arcs-cdn/dev/app/?solo=https://noelutz.github.io/arcs-stories/artifacts/SyncTest/recipe.manifest).
+ * Visit [demo Arc](https://polymerlabs.github.io/arcs-cdn/dev/apps/web/?solo=https://noelutz.github.io/arcs-stories/0.2/Testing/Testing.recipes).
  * Accept only suggestion
  * Add a few messages by filling the text box + hitting <enter>
  * Copy & paste URL into another TAB.
@@ -12,16 +11,15 @@
 
 **Test profile & replay of profile specific suggestions scenario**:
  * Step 1
-   * Privatize everything (see below).
-   * Visit [demo Arc as Berni](https://polymerlabs.github.io/arcs-cdn/dev/app/?solo=https://noelutz.github.io/arcs-stories/artifacts/SyncTest/recipe.manifest&user=Berni).
+   * Visit [demo Arc as Berni](https://polymerlabs.github.io/arcs-cdn/dev/apps/web/?solo=https://noelutz.github.io/arcs-stories/0.2/Testing/Testing.recipes&user=Berni).
    * Accept only suggestion.
    * Add a few messages.
    * Flag Arc as being part of Berni's profile.
  * Step 2
-   * Repeat same thing for Matt. Visit [demo Arc as Matt](https://polymerlabs.github.io/arcs-cdn/dev/app/?solo=https://noelutz.github.io/arcs-stories/artifacts/SyncTest/recipe.manifest&user=Matt).
+   * Repeat same thing for Matt. Visit [demo Arc as Matt](https://polymerlabs.github.io/arcs-cdn/dev/apps/web/?solo=https://noelutz.github.io/arcs-stories/0.2/Testing/Testing.recipes&user=Matt).
    * Repeat steps above for Matt.
  * Step 3
-   * Create a [new demo Arc as Berni](https://polymerlabs.github.io/arcs-cdn/dev/app/?solo=https://noelutz.github.io/arcs-stories/artifacts/SyncTest/recipe.manifest&user=Berni).
+   * Create a [new demo Arc as Berni](https://polymerlabs.github.io/arcs-cdn/dev/apps/web/?solo=https://noelutz.github.io/arcs-stories/0.2/Testing/Testing.recipes&user=Berni).
    * Accept "Show things".
    * You may need to hit "CTRL+S". RACE :(.
    * **Expectation:** Berni's messages appear from his profile.
@@ -32,13 +30,12 @@
 
 **Test shared Arc & replay of suggestions scenario**:
  * Step 1
-   * Privatize everything (see below).
-   * Visit [demo Arc as Berni](https://polymerlabs.github.io/arcs-cdn/dev/app/?solo=https://noelutz.github.io/arcs-stories/artifacts/SyncTest/recipe.manifest&user=Berni).
+   * Visit [demo Arc as Berni](https://polymerlabs.github.io/arcs-cdn/dev/apps/web/?solo=https://noelutz.github.io/arcs-stories/0.2/Testing/Testing.recipes&user=Berni).
    * Accept only suggestion.
    * Add a few messages.
    * Flag Arc as being shared.
  * Step 2
-   * Visit [demo Arc as Matt](https://polymerlabs.github.io/arcs-cdn/dev/app/?solo=https://noelutz.github.io/arcs-stories/artifacts/SyncTest/recipe.manifest&user=Matt).
+   * Visit [demo Arc as Matt](https://polymerlabs.github.io/arcs-cdn/dev/apps/web/?solo=https://noelutz.github.io/arcs-stories/0.2/Testing/Testing.recipes&user=Matt).
    * Select Berni as a friend (to pull in Berni's shared views).
    * You may need to hit "CTRL+S". RACE :(.
    * **Expectation:** "Show things" appears and displays Berni's shared things. Editing Berni's views should be reflected in Matt's Arc because the view is mapped.
@@ -46,10 +43,6 @@
 
 ## Recipes
 
-1. **Hello World using Glitch**. Requires [Identity](https://noelutz.github.io/arcs-stories/artifacts/Identity.manifest) to be included. [Code](https://glitch.com/edit/#!/arcs-hello-world), [Demo](https://arcs-hello-world.glitch.me).
-2. **Web Video Player**. [Web](https://polymerlabs.github.io/arcs-cdn/dev/app/?solo=https://noelutz.github.io/arcs-stories/artifacts/VideoPlayer/VideoPlayer.manifest), [VR](https://polymerlabs.github.io/arcs-cdn/dev/vr/?solo=https://noelutz.github.io/arcs-stories/artifacts/VideoPlayer/vr-recipe.manifest). In order to make the VR demo work you need to copy & paste the AMKEY from the Web to the VR demo.
-3. **Chat**. Request [Identity](https://noelutz.github.io/arcs-stories/artifacts/Identity.manifest). [Web](https://polymerlabs.github.io/arcs-cdn/dev/app/?solo=https://noelutz.github.io/arcs-stories/artifacts/Chat/Chat.manifest)
-
-## Privatize
-
-One can make all public Arcs private by visiting the following URL: [PRIVATIZE](https://us-central1-arcs-storage.cloudfunctions.net/privatize). **There is no way to revert this action!**
+1. **Hello World using Glitch**. [Code](https://glitch.com/edit/#!/arcs-hello-world), [Demo](https://arcs-hello-world.glitch.me).
+2. **Web Video Player**. [Web](https://polymerlabs.github.io/arcs-cdn/dev/apps/web/?solo=https://noelutz.github.io/arcs-stories/0.2/VideoPlayer/VideoPlayer.recipes), [VR](https://polymerlabs.github.io/arcs-cdn/dev/apps/vr/?solo=https://noelutz.github.io/arcs-stories/0.2/VideoPlayer/Vr/VideoPlayer.recipes). In order to make the VR demo work you need to copy & paste the AMKEY from the Web to the VR demo.
+3. **Chat**. BROKEN Request [Identity](https://noelutz.github.io/arcs-stories/artifacts/Identity.manifest). [Web](https://polymerlabs.github.io/arcs-cdn/dev/apps/web/?solo=https://noelutz.github.io/arcs-stories/artifacts/Chat/Chat.manifest)
