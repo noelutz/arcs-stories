@@ -10,7 +10,9 @@
 
 defineParticle(({DomParticle}) => {
 
-  let template = `<img src="{{message}}" height="48px" width="84px" id="{{name}}"></img>`.trim();
+  let template = `
+  <img src="{{message}}" height="48px" width="84px" id="{{name}}" style%="{{style}}"></img>
+  `.trim();
 
   return class extends DomParticle {
     get template() {
@@ -21,9 +23,11 @@ defineParticle(({DomParticle}) => {
         return {
           items: props.messages.map((m, i) => {
             if (m.type == 'mustache') {
-              return { subId: i, name: m.name, message: m.content };
+              return { subId: i, name: m.name, message: m.content, style: {}};
+            } else {
+              return { subId: i, style: {display: 'none'}};
             }
-          }).filter(m => m)
+          })
         };
       }
     }
