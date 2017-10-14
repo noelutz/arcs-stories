@@ -15,7 +15,7 @@ defineParticle(({DomParticle}) => {
     <template>
     <div>
       <ul>
-        <li>{{name}}</li>
+        <li value="{{id}}" on-click="_onClick">{{name}}</li>
       </ul>
     </div>
     </template>
@@ -26,11 +26,19 @@ defineParticle(({DomParticle}) => {
     get template() {
       return template;
     }
-    _render(props, state) {
+    _willReceiveProps(props) {
       if (props.things) {
+        this._setState({things: props.things});
+      }
+    }
+    _onClick(e, state) {
+      this._views.get('things').remove(state.things[e.data.value]);
+    }
+    _render(props, state) {
+      if (state.things) {
         return {
-          things: props.things.map(thing => {
-            return { name: thing.name };
+          things: state.things.map((thing, i) => {
+            return { name: thing.name, id: i };
           })
         };
       }

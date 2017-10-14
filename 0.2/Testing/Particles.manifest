@@ -9,7 +9,7 @@
 import 'https://$cdn/artifacts/Things/Thing.schema'
 
 particle ShowThings in 'source/ShowThings.js'
-  ShowThings(in [Thing] things)
+  ShowThings(inout [Thing] things)
   consume root
   description `show ${things}`
 

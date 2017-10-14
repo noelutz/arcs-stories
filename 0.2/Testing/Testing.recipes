@@ -15,12 +15,12 @@ recipe
   ProduceThings
     things -> thingsView
   ShowThings
-    things <- thingsView
+    things = thingsView
 
 recipe
   map #things as thingsView
   ShowThings
-    things <- thingsView
+    things = thingsView
 
 recipe
   create #thing as thingView
