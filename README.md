@@ -41,6 +41,9 @@
    * **Expectation:** "Show things" appears and displays Berni's shared things. Editing Berni's views should be reflected in Matt's Arc because the view is mapped.
 
 
+**Test Variable Syncing**
+[Set/View Thing](https://polymerlabs.github.io/arcs-cdn/dev/apps/web/?solo=https://noelutz.github.io/arcs-stories/0.2/Testing/Testing.recipes).
+
 ## Recipes
 
 1. **Hello World using Glitch**. [Code](https://glitch.com/edit/#!/arcs-hello-world), [Demo](https://arcs-hello-world.glitch.me).

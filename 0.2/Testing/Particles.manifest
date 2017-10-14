@@ -17,3 +17,14 @@ particle ProduceThings in 'source/ProduceThings.js'
   ProduceThings(out [Thing] things)
   consume root
   description `produce things`
+
+particle ShowThing in 'source/ShowThing.js'
+  ShowThing(in Thing thing)
+  consume root
+  description `show ${thing}`
+
+particle SetThing in 'source/SetThing.js'
+  SetThing(out Thing thing)
+  consume root
+  description `produce ${thing}`
+  

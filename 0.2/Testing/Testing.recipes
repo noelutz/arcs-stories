@@ -21,3 +21,10 @@ recipe
   map #things as thingsView
   ShowThings
     things <- thingsView
+
+recipe
+  create #thing as thingView
+  SetThing
+    thing -> thingView
+  ShowThing
+    thing <- thingView
