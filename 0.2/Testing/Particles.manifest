@@ -13,6 +13,11 @@ particle ShowThings in 'source/ShowThings.js'
   consume root
   description `show ${things}`
 
+particle OnlyShowThings in 'source/OnlyShowThings.js'
+  OnlyShowThings(in [Thing] things)
+  consume root
+  description `show ${things}`
+
 particle ProduceThings in 'source/ProduceThings.js'
   ProduceThings(out [Thing] things)
   consume root
