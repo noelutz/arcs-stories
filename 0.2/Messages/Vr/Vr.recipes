@@ -18,7 +18,7 @@ import 'Participants.manifest'
 # view Messages of [Message] #chat in 'messages.json'
 
 recipe
-  map #chat as messagesView
+  create #chat as messagesView
   map #identity as userIdentity
   create as participantView
 
