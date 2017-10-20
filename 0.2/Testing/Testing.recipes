@@ -28,3 +28,8 @@ recipe
     thing -> thingView
   ShowThing
     thing <- thingView
+
+recipe
+  map #thing as thingView
+  ShowThing
+    thing <- thingView
