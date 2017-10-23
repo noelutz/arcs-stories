@@ -20,7 +20,7 @@ import 'Participants.manifest'
 recipe
   create #chat as messagesView
   map #identity as userIdentity
-  create as participantView
+  create #participants as participantView
 
   Participants
     messages <- messagesView
@@ -31,6 +31,31 @@ recipe
     messages <- messagesView
     me <- userIdentity
     participants <- participantView
+  RenderMustaches
+    messages <- messagesView
+    me <- userIdentity
+    participants <- participantView
+
+recipe
+  create #chat as messagesView
+  map #identity as userIdentity
+  create #participants as participantView
+
+  Participants
+    messages <- messagesView
+    participants = participantView
+  ParticipantList
+    participants <- participantView
+  RenderTranscript
+    messages <- messagesView
+    me <- userIdentity
+    participants <- participantView
+
+recipe
+  use #chat as messagesView
+  map #identity as userIdentity
+  use #participants as participantView
+
   RenderMustaches
     messages <- messagesView
     me <- userIdentity
