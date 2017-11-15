@@ -15,7 +15,7 @@ defineParticle(({DomParticle}) => {
     <template>
     <div>
       <ul>
-        <li>{{name}}</li>
+        <li><span>{{name}}</span>&nbsp;<span>{{separator}}</span>&nbsp;<span>{{owner}}</span></li>
       </ul>
     </div>
     </template>
@@ -30,7 +30,7 @@ defineParticle(({DomParticle}) => {
       if (props.things) {
         return {
           things: props.things.map(thing => {
-            return { name: thing.name };
+            return { name: thing.name, separator: thing.owner ? '-' : '', owner: thing.owner };
           })
         };
       }
