@@ -1,0 +1,35 @@
+# @license
+# Copyright (c) 2017 Google Inc. All rights reserved.
+# This code may only be used under the BSD style license found at
+# http://polymer.github.io/LICENSE.txt
+# Code distributed by Google as part of this project is also
+# subject to an additional IP rights grant found at
+# http://polymer.github.io/PATENTS.txt
+
+import 'https://$cdn/artifacts/Things/Thing.schema'
+
+particle ShowThings in 'source/ShowThings.js'
+  ShowThings(inout [Thing] things)
+  consume root
+  description `show ${things}`
+
+particle OnlyShowThings in 'source/OnlyShowThings.js'
+  OnlyShowThings(in [Thing] things)
+  consume root
+  description `show ${things}`
+
+particle ProduceThings in 'source/ProduceThings.js'
+  ProduceThings(out [Thing] things)
+  consume root
+  description `produce things`
+
+particle ShowThing in 'source/ShowThing.js'
+  ShowThing(in Thing thing)
+  consume root
+  description `show ${thing}`
+
+particle SetThing in 'source/SetThing.js'
+  SetThing(out Thing thing)
+  consume root
+  description `produce ${thing}`
+  
