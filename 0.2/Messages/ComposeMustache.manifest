@@ -12,4 +12,4 @@ import 'https://$cdn/artifacts/People/Person.schema'
 particle ComposeMustache in 'source/ComposeMustache.js'
   ComposeMustache(in Person me, inout [Message] messages)
   consume compose
-  description `compose mustache`
+  description `chat mustaches with friends`
