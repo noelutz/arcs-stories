@@ -9,7 +9,11 @@
 import 'https://sjmiles.github.io/arc-stories/0.2/Messages/Message.schema'
 import 'https://$cdn/artifacts/People/Person.schema'
 
-particle RenderTranscript in 'source/RenderTranscript.js'
-  RenderTranscript(in Person me, in [Person] participants, in [Message] messages)
+particle ShowChatMessages in 'source/ShowChatMessages.js'
+  ShowChatMessages(in [Person] people, in Person user, inout [Message] messages, in [Person] participants)
   consume set of topofhead
-  description `see chats`
+  consume chatmessages
+    provide preamble
+    provide compose
+    provide set of custom_message
+      view messages

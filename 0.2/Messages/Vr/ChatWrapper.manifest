@@ -6,10 +6,10 @@
 # subject to an additional IP rights grant found at
 # http://polymer.github.io/PATENTS.txt
 
-import 'https://sjmiles.github.io/arc-stories/0.2/Messages/Message.schema'
 import 'https://$cdn/artifacts/People/Person.schema'
+import 'https://sjmiles.github.io/arc-stories/0.2/Messages/Message.schema'
 
-particle RenderMustaches in 'source/RenderMustaches.js'
-  RenderMustaches(in [Message] messages, in [Person] participants)
-  consume set of custom_message
-  consume set of mouth
+particle ChatWrapper in '../source/NoOp.js'
+  ChatWrapper(in [Message] messages, in [Person] people, in [Person] participants)
+  consume toproot
+    provide chatmessages

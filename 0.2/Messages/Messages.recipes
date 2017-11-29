@@ -7,30 +7,28 @@
 # http://polymer.github.io/PATENTS.txt
 
 import 'https://sjmiles.github.io/arc-stories/0.2/Messages/Message.schema'
-import 'https://$cdn/artifacts/People/Person.schema'
+import 'https://sjmiles.github.io/arc-stories/0.2/Messages/ComposeMessage.manifest'
 
-import 'ParticipantList.manifest'
+import 'Mustache.recipes'
+
 import 'ShowChatMessages.manifest'
-import 'RenderMustaches.manifest'
-import 'ComposeMustache.manifest'
-import 'Participants.manifest'
-import 'ComposeMessage.manifest'
 import 'ChatWrapper.manifest'
+import 'Participants.manifest'
+import 'ParticipantList.manifest'
 
-# Render chat transcript in VR + mustaches.
 recipe
   create #chat as messages
   map #identity as user
   map #identities as people
   create #participants #nosync as participants
 
+  # NoOp particles to mimic what the VR chat is doing.
   Participants
     messages <- messages
     participants = participants
   ParticipantList
     participants <- participants
 
-  # No-op in the VR world.
   ChatWrapper
     messages <- messages
     people <- people
@@ -42,21 +40,6 @@ recipe
     user <- user
     participants <- participants
 
-  # This is a no-op particle in VR
   ComposeMessage
     messages = messages
     user <- user
-
-recipe
-  use #chat as messages
-  map #identity as user
-  use #participants as participants
-
-  # This is a no-op particle in VR
-  ComposeMustache
-    messages = messages
-    me <- user
-
-  RenderMustaches
-    messages <- messages
-    participants <- participants

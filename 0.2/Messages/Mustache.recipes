@@ -13,9 +13,11 @@ import 'RenderMustaches.manifest'
 recipe
   use #chat as messages
   map #identity as user
+  use #participants as participants
+
   ComposeMustache
     messages = messages
     me <- user
   RenderMustaches
     messages <- messages
-    me <- user
+    participants <- participants

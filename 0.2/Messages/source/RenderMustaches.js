@@ -19,7 +19,7 @@ defineParticle(({DomParticle}) => {
       return template;
     }
     _render(props, state) {
-      if (props.me && props.messages && props.messages.length) {
+      if (props.messages && props.messages.length) {
         return {
           items: props.messages.map((m, i) => {
             if (m.type == 'mustache') {

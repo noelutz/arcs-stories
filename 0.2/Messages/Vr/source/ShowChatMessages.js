@@ -61,7 +61,7 @@ defineParticle(({DomParticle}) => {
       }
     }
     _willReceiveProps(props) {
-      if (props.me && props.participants && props.participants.length && props.messages && props.messages.length) {
+      if (props.participants && props.participants.length && props.messages && props.messages.length) {
         let latest = new Map();
         props.messages.forEach(c => {
           if (c.content &&
@@ -74,7 +74,7 @@ defineParticle(({DomParticle}) => {
       }
     }
     _render(props, state) {
-      if (state.latest) {
+      if (state.latest && props.participants) {
         return {
           items: props.participants.map(p => this._renderInner(p, state.latest.get(p.name)))
         };

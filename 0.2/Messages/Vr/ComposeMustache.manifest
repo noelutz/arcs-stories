@@ -9,7 +9,6 @@
 import 'https://sjmiles.github.io/arc-stories/0.2/Messages/Message.schema'
 import 'https://$cdn/artifacts/People/Person.schema'
 
-particle RenderMustaches in 'source/RenderMustaches.js'
-  RenderMustaches(in [Message] messages, in [Person] participants)
-  consume set of custom_message
-  consume set of mouth
+particle ComposeMustache in '../source/NoOp.js'
+  ComposeMustache(in Person me, inout [Message] messages)
+  consume compose
