@@ -48,8 +48,8 @@ defineParticle(({DomParticle}) => {
       };
     }
     _onNameChange(e, state) {
-      const Post = this._views.get('things').entityClass;
-      this._views.get('things').store(new Post({name: e.data.value, time: new Date().toLocaleString()}));
+      const Post = this._views.get('posts').entityClass;
+      this._views.get('posts').store(new Post({name: e.data.value, time: new Date().toLocaleString()}));
       // Set the state to trigger render().
       this._setState({name: ''});
     }

@@ -10,19 +10,19 @@ import 'https://$cdn/artifacts/Things/Thing.schema'
 import 'Particles.manifest'
 
 recipe
-  create #posts as thingsView
-  map #identity as userIdentity
+  create #posts as posts
+  map #identity as user
 
-  ProduceThings
-    things -> thingsView
-  ShowThings
-    things = thingsView
-    me <- userIdentity
+  WritePosts
+    posts -> posts
+  ShowPosts
+    posts = posts
+    user <- user
 
 recipe
-  map #ALL_posts as thingsView
-  map #identity as userIdentity
+  map #ALL_posts as posts
+  map #identity as user
 
-  OnlyShowThings
-    things <- thingsView
-    me <- userIdentity
+  OnlyShowPosts
+    posts <- posts
+    user <- user

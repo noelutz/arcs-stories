@@ -10,17 +10,17 @@ import 'https://$cdn/artifacts/People/Person.schema'
 import 'https://$cdn/artifacts/Things/Thing.schema'
 import 'Post.manifest'
 
-particle ShowThings in 'source/ShowThings.js'
-  ShowThings(inout [Post] things, in Person me)
+particle ShowPosts in 'source/ShowPosts.js'
+  ShowPosts(inout [Post] posts, in Person user)
   consume root
-  description `show ${things}`
+  description `show ${posts}`
 
-particle OnlyShowThings in 'source/ShowThings.js'
-  OnlyShowThings(in [Post] things, in Person me)
+particle OnlyShowPosts in 'source/ShowPosts.js'
+  OnlyShowPosts(in [Post] posts, in Person user)
   consume root
-  description `show ${things}`
+  description `show ${posts}`
 
-particle ProduceThings in 'source/ProduceThings.js'
-  ProduceThings(out [Post] things)
+particle WritePosts in 'source/WritePosts.js'
+  WritePosts(out [Post] posts)
   consume root
-  description `produce things`
+  description `write posts`

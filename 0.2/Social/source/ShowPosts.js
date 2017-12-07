@@ -40,7 +40,7 @@ defineParticle(({DomParticle}) => {
     margin-bottom: 4px;
   }
 </style>
-<x-list items="{{things}}">
+<x-list items="{{posts}}">
     <template>
     <div msg>
       <div title>
@@ -59,12 +59,12 @@ defineParticle(({DomParticle}) => {
       return template;
     }
     _willReceiveProps(props) {
-      if (props.things) {
-        this._setState({things: props.things});
+      if (props.posts) {
+        this._setState({posts: props.posts});
       }
     }
     _onClick(e, state) {
-      this._views.get('things').remove(state.things[e.data.value]);
+      this._views.get('posts').remove(state.posts[e.data.value]);
     }
     _timeSince(time) {
       var interval = Math.floor((new Date() - new Date(time)) / 1000);
@@ -82,8 +82,8 @@ defineParticle(({DomParticle}) => {
       return time;
     }
     _render(props, state) {
-      if (state.things) {
-        let posts = state.things.map((t, i) => {
+      if (state.posts) {
+        let posts = state.posts.map((t, i) => {
           t.date = new Date(t.time);
           t.id = i;
           return t;
@@ -92,12 +92,12 @@ defineParticle(({DomParticle}) => {
           return b.date.getTime() - a.date.getTime();
         });
         return {
-          things: posts.map(thing => {
-            return { name: thing.name,
-                     id: thing.id,
-                     time: this._timeSince(thing.time),
-                     style: { display: this._views.get('things').canWrite ? 'inline' : 'none' },
-                     owner: thing.owner ? thing.owner : props.me.name };   
+          posts: posts.map(post => {
+            return { name: post.name,
+                     id: post.id,
+                     time: this._timeSince(post.time),
+                     style: { display: this._views.get('posts').canWrite ? 'inline' : 'none' },
+                     owner: post.owner ? post.owner : props.user.name };   
           })
         };
       }
