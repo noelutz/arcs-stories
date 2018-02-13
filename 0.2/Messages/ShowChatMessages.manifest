@@ -10,7 +10,7 @@
 import 'https://$cdn/artifacts/People/Person.schema'
 import 'https://sjmiles.github.io/arcs-stories/0.2/Messages/Message.schema'
 
-particle ShowChatMessages in 'https://sjmiles.github.io/arc-stories/0.2/Messages/source/ShowChatMessages.js'
+particle ShowChatMessages in 'https://sjmiles.github.io/arcs-stories/0.2/Messages/source/ShowChatMessages.js'
   ShowChatMessages(in [Person] people, in Person user, inout [Message] messages, in [Person] participants)
   consume set of topofhead
   consume chatmessages
