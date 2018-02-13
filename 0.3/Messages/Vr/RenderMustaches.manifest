@@ -6,7 +6,7 @@
 // subject to an additional IP rights grant found at
 // http://polymer.github.io/PATENTS.txt
 
-import 'https://sjmiles.github.io/arcs-stories/0.2/Messages/Message.schema'
+import 'https://sjmiles.github.io/arcs-stories/0.3/Messages/Message.schema'
 import 'https://$cdn/artifacts/People/Person.schema'
 
 particle RenderMustaches in 'source/ShowChatMessages.js'
