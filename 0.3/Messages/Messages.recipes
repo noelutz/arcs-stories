@@ -1,0 +1,45 @@
+// @license
+// Copyright (c) 2017 Google Inc. All rights reserved.
+// This code may only be used under the BSD style license found at
+// http://polymer.github.io/LICENSE.txt
+// Code distributed by Google as part of this project is also
+// subject to an additional IP rights grant found at
+// http://polymer.github.io/PATENTS.txt
+
+import 'https://sjmiles.github.io/arcs-stories/0.2/Messages/Message.schema'
+import 'https://sjmiles.github.io/arcs-stories/0.2/Messages/ComposeMessage.manifest'
+
+import 'Mustache.recipes'
+
+import 'ShowChatMessages.manifest'
+import 'ChatWrapper.manifest'
+import 'Participants.manifest'
+import 'ParticipantList.manifest'
+
+recipe
+  create #chat as messages
+  map #identity as user
+  map #identities as people
+  create #participants #nosync as participants
+
+  // NoOp particles to mimic what the VR chat is doing.
+  Participants
+    messages <- messages
+    participants = participants
+  ParticipantList
+    participants <- participants
+
+  ChatWrapper
+    messages <- messages
+    people <- people
+    participants <- participants
+
+  ShowChatMessages
+    people <- people
+    messages = messages
+    user <- user
+    participants <- participants
+
+  ComposeMessage
+    messages = messages
+    user <- user
